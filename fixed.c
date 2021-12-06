@@ -17,7 +17,8 @@ struct library {
 	char name[NAME];
 };
 
-void add_book(struct library lib, struct book book) {
+void add_book(struct library lib) {
+	struct book book
 	for (int i = 0; i < CAPACITY; i++) {
 		if (lib.books[i].flag == 1) 
 		{
@@ -32,8 +33,7 @@ void add_book(struct library lib, struct book book) {
 
 int search_book(struct library lib, char author[NAME], int year) {
 	for (int i = 0;i < CAPACITY; i++) {
-		if (lib.books[i].flag == 1 && (strcmp(lib.books[i].author, author) == 0 && (year == lib.books[i].year)) 
-		{
+		if (lib.books[i].flag == 1 && (strcmp(lib.books[i].author, author) == 0 && (year == lib.books[i].year))) {
 			return i;
 		}
 	}	
@@ -52,9 +52,12 @@ void remove_book(struct library lib, char author[NAME], int year){
 int main()
 {
 	struct library centeral_library;
-
-	// TODO: Call methods to test the program 
-	// TODO: Debug the code if its neccussary 
-	// TODO: Write documents
+	strcpy(centeral_library.name , "Test");
+	strcpy(centeral_library.books->author , "Test-author");
+	strcpy(centeral_library.books->content , "Test-content");
+	centeral_library.books->year = 1995;
+	add_book(centeral_library);
+	search_book(centeral_library , "Test-author" , 1995);
+	remove_book(centeral_library , "Test-author" , 1995);
 	return 0;
 }
