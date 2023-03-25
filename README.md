@@ -1,5 +1,12 @@
 # :dragon: Dragonfly
 
+![](https://img.shields.io/github/checks-status/amirhnajafiz/dragonfly/main?style=flat-square)
+![](https://img.shields.io/badge/language-Golang-9cf?style=flat-square)
+![](https://img.shields.io/github/v/release/amirhnajafiz/dragonfly?style=flat-square)
+![](https://img.shields.io/badge/platform-ODE-important?style=flat-square)
+![](https://img.shields.io/badge/runtime-Docker-blue?style=flat-square)
+
+
 Domesticate dragonfly for Snapp ODE. Setting up dragonfly with Docker, deploy on Kubernetes with a single Pod, deploy using
 Charts. Testing dragonfly with a simple load testing application.
 
