@@ -1,0 +1,55 @@
+apiVersion: v2
+name: dragonfly
+description: Dragonfly is an intelligent P2P based image and file distribution system
+icon: https://raw.githubusercontent.com/dragonflyoss/Dragonfly2/main/docs/images/logo/dragonfly.svg
+type: application
+version: 1.0.1
+appVersion: 1.0.1
+keywords:
+  - dragonfly
+  - d7y
+  - P2P
+  - image
+
+maintainers:
+  - name: jim3ma
+    email: majinjing3@gmail.com
+  - name: gaius-qi
+    email: gaius.qi@gmail.com
+  - name: yxxhero
+    email: aiopsclub@163.com
+
+home: https://d7y.io/
+
+sources:
+  - https://github.com/dragonflyoss/Dragonfly2
+
+annotations:
+  artifacthub.io/changes: |
+    - Change default value of TTL in manager cache.
+    - Change default valude of refreshInterval in dfdaemon and scheduler.
+  artifacthub.io/links: |
+    - name: Chart Source
+      url: https://github.com/dragonflyoss/helm-charts
+    - name: Source
+      url: https://github.com/dragonflyoss/Dragonfly2
+  artifacthub.io/images: |
+    - name: manager
+      image: dragonflyoss/manager:v2.0.9
+    - name: dfdaemon
+      image: dragonflyoss/dfdaemon:v2.0.9
+    - name: scheduler
+      image: dragonflyoss/scheduler:v2.0.9
+dependencies:
+  - name: mysql
+    version: 9.4.6
+    repository: https://charts.bitnami.com/bitnami
+    condition: mysql.enable
+  - name: redis
+    version: 17.4.3
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enable
+  - name: jaeger
+    version: 0.66.1
+    repository: https://jaegertracing.github.io/helm-charts
+    condition: jaeger.enable
