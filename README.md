@@ -24,7 +24,36 @@ docker pull docker.dragonflydb.io/dragonflydb/dragonfly
 ### start
 
 ```shell
-docker run --network=host --ulimit memlock=-1 docker.dragonflydb.io/dragonflydb/dragonfly
+docker run --ulimit memlock=-1 -p 6379:6379 docker.dragonflydb.io/dragonflydb/dragonfly
+```
+
+Now you can use ```redis``` sdk to connect to ```dragonfly``` cluster.
+
+```go
+rdb := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "", // no password set
+		DB:       0,  // use default DB
+	})
+
+err := rdb.Set(ctx, "key", "value", 0).Err()
+if err != nil {
+  panic(err)
+}
+
+val, err := rdb.Get(ctx, "key").Result()
+if err != nil {
+  panic(err)
+}
+fmt.Println("key", val)
+```
+
+## Charts
+
+Dragonfly also provides helm charts in order to deploy an instance on kubernetes.
+
+```shell
+helm install charts dragonfly
 ```
 
 ## :books: Resources!
