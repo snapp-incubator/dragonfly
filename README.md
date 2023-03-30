@@ -17,6 +17,10 @@ operations per second and terabyte sized workloads, all on a single instance.
 ```Dragonfly``` gives you so much more with a complete, modern engine architecture that’s fully 
 compatible with the Redis and Memcached APIs.
 
+```shell
+docker pull docker.dragonflydb.io/dragonflydb/dragonfly
+```
+
 ### start
 
 ```shell
