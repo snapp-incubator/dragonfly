@@ -1,6 +1,5 @@
 # :dragon: Dragonfly
 
-![](https://img.shields.io/github/checks-status/amirhnajafiz/dragonfly/main?style=flat-square)
 ![](https://img.shields.io/badge/language-Golang-9cf?style=flat-square)
 ![](https://img.shields.io/github/v/release/amirhnajafiz/dragonfly?style=flat-square)
 ![](https://img.shields.io/badge/platform-ODE-important?style=flat-square)
