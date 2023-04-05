@@ -1,0 +1,12 @@
+dependencies:
+- name: mysql
+  repository: https://charts.bitnami.com/bitnami
+  version: 9.4.6
+- name: redis
+  repository: https://charts.bitnami.com/bitnami
+  version: 17.4.3
+- name: jaeger
+  repository: https://jaegertracing.github.io/helm-charts
+  version: 0.66.1
+digest: sha256:c14f7e59ba70741359e8eeccf6ddca14f7a67b1ef09b7ce6a61c6c641965f5b5
+generated: "2023-04-05T15:08:56.627945+03:30"
