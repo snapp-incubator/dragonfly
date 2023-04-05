@@ -1,56 +1,62 @@
-{{/* vim: set filetype=mustache: */}}
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "dragonfly.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
+{{- define "charts.name" -}}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- end }}
 
 {{/*
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+If release name contains chart name it will be used as a full name.
 */}}
-{{- define "dragonfly.fullname" -}}
-{{- if .Values.fullnameOverride -}}
-{{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
-{{- else -}}
-{{- $name := default .Chart.Name .Values.nameOverride -}}
-{{- if contains $name .Release.Name -}}
-{{- .Release.Name | trunc 63 | trimSuffix "-" -}}
-{{- else -}}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
-{{- end -}}
-{{- end -}}
+{{- define "charts.fullname" -}}
+{{- if .Values.fullnameOverride }}
+{{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $name := default .Chart.Name .Values.nameOverride }}
+{{- if contains $name .Release.Name }}
+{{- .Release.Name | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
+{{- end }}
+{{- end }}
+{{- end }}
 
 {{/*
-Create a default fully qualified scheduler name.
-We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+Create chart name and version as used by the chart label.
 */}}
-{{- define "dragonfly.scheduler.fullname" -}}
-{{ template "dragonfly.fullname" . }}-{{ .Values.scheduler.name }}
-{{- end -}}
+{{- define "charts.chart" -}}
+{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
 
 {{/*
-Create a default fully qualified seed peer name.
-We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+Common labels
 */}}
-{{- define "dragonfly.seedPeer.fullname" -}}
-{{ template "dragonfly.fullname" . }}-{{ .Values.seedPeer.name }}
-{{- end -}}
+{{- define "charts.labels" -}}
+helm.sh/chart: {{ include "charts.chart" . }}
+{{ include "charts.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
 
 {{/*
-Create a default fully qualified manager name.
-We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+Selector labels
 */}}
-{{- define "dragonfly.manager.fullname" -}}
-{{ template "dragonfly.fullname" . }}-{{ .Values.manager.name }}
-{{- end -}}
+{{- define "charts.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "charts.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
 
 {{/*
-Create a default fully qualified dfdaemon name.
-We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+Create the name of the service account to use
 */}}
-{{- define "dragonfly.dfdaemon.fullname" -}}
-{{ template "dragonfly.fullname" . }}-{{ .Values.dfdaemon.name }}
-{{- end -}}
+{{- define "charts.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create }}
+{{- default (include "charts.fullname" .) .Values.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}
