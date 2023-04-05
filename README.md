@@ -53,7 +53,8 @@ fmt.Println("key", val)
 Dragonfly also provides helm charts in order to deploy an instance on kubernetes.
 
 ```shell
-helm install charts dragonfly
+helm deps build charts
+helm install dragonfly charts
 ```
 
 ## :books: Resources!
