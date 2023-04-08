@@ -5,7 +5,7 @@
 ![](https://img.shields.io/badge/platform-ODE-important?style=flat-square)
 ![](https://img.shields.io/badge/platform-OKD-important?style=flat-square)
 ![](https://img.shields.io/badge/runtime-Docker-blue?style=flat-square)
-
+![](https://img.shields.io/badge/deploy-helm_charts-lightblue?style=flat-square)
 
 Domesticate dragonfly for Snapp ODE. Setting up dragonfly with Docker, deploy on Kubernetes with a single Pod, deploy using
 Charts. Testing dragonfly with a simple load testing application.
@@ -53,7 +53,6 @@ fmt.Println("key", val)
 Dragonfly also provides helm charts in order to deploy an instance on kubernetes.
 
 ```shell
-helm deps build charts
 helm install dragonfly charts
 ```
 
