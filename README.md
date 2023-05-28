@@ -2,7 +2,6 @@
 
 ![](https://img.shields.io/badge/language-CPP-9cf?style=flat-square)
 ![](https://img.shields.io/github/v/release/amirhnajafiz/dragonfly?style=flat-square)
-![](https://img.shields.io/badge/platform-ODE-important?style=flat-square)
 ![](https://img.shields.io/badge/platform-OKD-important?style=flat-square)
 ![](https://img.shields.io/badge/runtime-Docker-blue?style=flat-square)
 ![](https://img.shields.io/badge/deploy-helm_charts-lightblue?style=flat-square)
