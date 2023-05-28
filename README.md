@@ -59,10 +59,3 @@ helm install dragonfly charts
 ## :books: Resources!
 
 - [dragonflydb.io](https://dragonflydb.io/)
-
-## TODO
-
-- [ ] Add ```service account```
-- [ ] Deploy on ```parham-testing``` namespace
-- [ ] Implement a load test
-- [ ] Benchmark of ```dragonfly```
