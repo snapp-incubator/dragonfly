@@ -55,6 +55,20 @@ Dragonfly also provides helm charts in order to deploy an instance on kubernetes
 helm install dragonfly charts
 ```
 
+## Benchmark
+
+### throughput
+
+![](https://www.dragonflydb.io/assets/blog/scaling-performance-redis-vs-dragonfly/throughput.png)
+
+### latency
+
+![](https://www.dragonflydb.io/assets/blog/scaling-performance-redis-vs-dragonfly/latency.png)
+
+### snapshot memory
+
+![](https://www.dragonflydb.io/assets/blog/scaling-performance-redis-vs-dragonfly/memory-usage.png)
+
 ## :books: Resources!
 
 - [dragonflydb.io](https://dragonflydb.io/)
