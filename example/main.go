@@ -2,21 +2,28 @@ package main
 
 import (
 	"context"
-	"fmt"
+	"flag"
+	"log"
 
 	"github.com/redis/go-redis/v9"
 )
 
 func main() {
+	var (
+		DragonFlyHost = flag.String("host", "localhost:6379", "dragonfly host")
+	)
+
+	flag.Parse()
+
 	ctx := context.Background()
 
 	rdb := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     *DragonFlyHost,
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
 
-	err := rdb.Set(ctx, "key", "value", 0).Err()
+	err := rdb.Set(ctx, "key", "dragonfly rocks", 0).Err()
 	if err != nil {
 		panic(err)
 	}
@@ -25,5 +32,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("key", val)
+
+	log.Println("key", val)
 }
